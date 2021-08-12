@@ -1,9 +1,8 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-//const emailValidator = require('email-validator');
 const readmeTemplate = require("./utils/readmeTemplate.js")
-
+const generateMarkdown = require("./utils/generateMarkdown.js")
 // An array of questions for user input
 const promptUser = () => {
     return inquirer.prompt([
@@ -162,17 +161,43 @@ const promptUser = () => {
     ]);
   };
 
-  promptUser()
-  .then((answers) => {
-    data = answers;
-    return answers;
-  })
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+
+  return new Promise((resolve, reject) => {
+    fs.writeFile(fileName, data, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
+  });
+};
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() { 
+  promptUser()
+  .then(answers => {
+    console.log(generateMarkdown(answers));
+    return generateMarkdown(answers);
+    
+  })
+  .then(readmeFile => {
+    fileName= './result/README.md';
+    console.log('------');
+      console.log(readmeFile);
+      return writeToFile(fileName, readmeFile);
+  })
+  .catch(err => {
+  console.log(err);
+  });
+}
 
 // Function call to initialize app
 init();
