@@ -1,8 +1,10 @@
 // Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const readmeTemplate = require("./utils/readmeTemplate.js")
-const generateMarkdown = require("./utils/generateMarkdown.js")
+const {generateMarkdown, licenses} = require("./utils/generateMarkdown.js");
+const choicesL=licenses.map(x=>x.name);
+console.log(choicesL);
+
 // An array of questions for user input
 const promptUser = () => {
     return inquirer.prompt([
@@ -36,15 +38,7 @@ const promptUser = () => {
         type: "checkbox",
         name: "technologies",
         message: "Technologies Used (Check all that apply)",
-        choices: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Node.js",
-          "PHP",
-          "React",
-          "Ruby",
-        ],
+        choices: ['JavaScript', 'HTML','CSS'],
         default:['JavaScript'],
       },
       {
@@ -90,18 +84,9 @@ const promptUser = () => {
 
       { 
         type: 'list',
-        name: 'licensing',
+        name: 'license',
         message: 'Choose a license for your application. (Required)',
-        choices: [
-            'MIT License',
-            'GNU AGPLv3',
-            'GNU GPLv3',
-            'GNU LGPLv3',
-            'Mozilla Public License 2.0',
-            'Apache License 2.0',
-            'Boost Software License 1.0',
-            'The Unlicense'],
-            default:['MIT License'],
+        choices: choicesL,
     },
     {
       type: 'input',
@@ -174,7 +159,7 @@ function writeToFile(fileName, data) {
 
       resolve({
         ok: true,
-        message: 'File created!'
+        message: `File ${fileName} created!`
       });
     });
   });
@@ -182,17 +167,17 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() { 
+  console.log(licenses);
   promptUser()
   .then(answers => {
-    console.log(generateMarkdown(answers));
-    return generateMarkdown(answers);
-    
+    return generateMarkdown(answers);  
   })
   .then(readmeFile => {
     fileName= './result/README.md';
-    console.log('------');
-      console.log(readmeFile);
       return writeToFile(fileName, readmeFile);
+  })
+  .then(writeFileResponse => {
+    console.log(writeFileResponse.message);
   })
   .catch(err => {
   console.log(err);
