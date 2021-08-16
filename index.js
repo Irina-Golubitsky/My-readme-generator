@@ -3,7 +3,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const {generateMarkdown, licenses} = require("./utils/generateMarkdown.js");
 const choicesL=licenses.map(x=>x.name);
-console.log(choicesL);
 
 // An array of questions for user input
 const promptUser = () => {
@@ -70,7 +69,7 @@ const promptUser = () => {
       {
         type: "input",
         name: "usage",
-        message: "Usage. How can someone use this app? (Required)",
+        message: "Usage. How to use this app? (Required)",
         validate: (usage) => {
           if(usage) {
             return true;
@@ -85,12 +84,12 @@ const promptUser = () => {
       { 
         type: 'list',
         name: 'license',
-        message: 'Choose a license for your application. (Required)',
+        message: 'Choose a license for your application:',
         choices: choicesL,
     },
     {
       type: 'input',
-      name: 'contribute',
+      name: 'contributed',
       message: 'Enter contribution guidelines (Required)',
       validate: contribute=> {
         if (contribute) {
@@ -167,7 +166,6 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() { 
-  console.log(licenses);
   promptUser()
   .then(answers => {
     return generateMarkdown(answers);  

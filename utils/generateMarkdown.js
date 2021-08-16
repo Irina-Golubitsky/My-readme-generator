@@ -27,49 +27,52 @@ const licenses = [
   badgeLink:'[![License: Open Data Commons Attribution](https://img.shields.io/badge/License-ODC_BY-brightgreen.svg)](https://opendatacommons.org/licenses/by/)',
   },
   { name:'--no license--',
-  badgeLink:'',
+  badgeLink:''
   },
 ]
-// TODO: Create a function that returns a license badge and link based on which license is passed in
+// TODO: Create a function that returns a license badge-link based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadgeLink(license) {
   myLicense= licenses.find(element => element.name===license);
   return myLicense.badgeLink;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-//function renderLicenseLink(license) {}
+function createTechnologies(techList){
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+  techString='';
+  if (techList.length>0){
+    techString='## Technologies Used\n ';
+  techString+='---\n ';
+    for (i=0;i<techList.length;i++){
+      techString= techString+ '* ' + techList[i] +'\n ';
+  }
+  return techString;
+    }
+  }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
 
   # ${data.name} ${renderLicenseBadgeLink(data.license)}
+
   ${data.shortDes}
   
   ## Description
   ---
   ${data.description}
   
-  ## Technologies Used
-  ---
-  ${data.technologies}
-  * HTML
+
+  ${createTechnologies(data.technologies)}
   
   ## Table of Contents 
   ---
   
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credit](#credit)
-  - [Questoins](#questions)
   - [License](#license)
-  
+  - [Contributed](#contributed)
+  - [Questoins](#questions)
   
   ## Installation 
   ---
@@ -81,10 +84,15 @@ function generateMarkdown(data) {
   
   ${data.usage}  
 
-  ## Credit
+  ## License 
   ---
   
-  ${data.contribute}  
+  ${data.license} ${renderLicenseBadgeLink(data.license)}
+
+  ## Contributed
+  ---
+  
+  ${data.contributed}  
   
   ## Test
   ---
@@ -93,15 +101,12 @@ function generateMarkdown(data) {
   
   ## Questions
   ---
+  If you hane any questions:
   
-  Get in touch with me on Github: [${data.username}](https://github.com/${data.username})
+  Get in touch with me on Github [${data.username}](https://github.com/${data.username})
   
-  If you have any additional questions, please contact me: ${data.email}
+  Email me ${data.email}
   
-  ## License 
-  ---
-  
-  ${data.license}  
   `;
   }
 
