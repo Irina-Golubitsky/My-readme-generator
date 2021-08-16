@@ -36,9 +36,8 @@ function renderLicenseBadgeLink(license) {
   myLicense= licenses.find(element => element.name===license);
   return myLicense.badgeLink;
 }
-
+// a function to generate Technologies Used section / if no technologies selected exclude this section from README
 function createTechnologies(techList){
-
   techString='';
   if (techList.length>0){
     techString='## Technologies Used\n ';

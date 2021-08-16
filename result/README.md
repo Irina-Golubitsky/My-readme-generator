@@ -1,12 +1,12 @@
 
 
-# rfuiew 
+  # City Weather Dashboard [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  urwfi
+  A weather dashboard that uses the OpenWeather One Call API to show current weather and 5-day forcast for a city
   
   ## Description
   ---
-  fkejr\
+  Use this app to see the weather outlook for multiple cities. Search for a city and you will be presented with current and future conditions for that city and that city will be added to the search history. The weather info contains city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index. 
   
 
   ## Technologies Used
@@ -28,34 +28,34 @@
   ## Installation 
   ---
   
-  krjgoi4  
+  no installation  
   
   ## Usage
   ---
   
-  fi4jo  
+  To search for a city input a city name and click "Search". Click on a city button in the search history to see current and future weather conditions for that city again.  
 
   ## License 
   ---
   
-  --no license-- 
+  The MIT License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Contributed
   ---
   
-  jfie  
+  contact me  
   
   ## Test
   ---
   
-  jreiv  
+  test1, test2  
   
   ## Questions
   ---
   If you hane any questions:
   
-  Get in touch with me on Github [jvbek](https://github.com/jvbek)
+  Get in touch with me on Github [Irina-Golubitsky](https://github.com/Irina-Golubitsky)
   
-  Email me kve@dhu.ru
+  Email me irina.golubitsky@gmail.com
   
   

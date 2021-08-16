@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const {generateMarkdown, licenses} = require("./utils/generateMarkdown.js");
+// array of licenses
 const choicesL=licenses.map(x=>x.name);
 
 // An array of questions for user input
@@ -37,8 +38,7 @@ const promptUser = () => {
         type: "checkbox",
         name: "technologies",
         message: "Technologies Used (Check all that apply)",
-        choices: ['JavaScript', 'HTML','CSS'],
-        default:['JavaScript'],
+        choices: ['JavaScript', 'HTML','CSS','PHP','Ruby', 'React', 'Python'],
       },
       {
         type: "input",
@@ -155,7 +155,6 @@ function writeToFile(fileName, data) {
         reject(err);
         return;
       }
-
       resolve({
         ok: true,
         message: `File ${fileName} created!`
