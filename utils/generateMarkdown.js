@@ -41,7 +41,6 @@ function createTechnologies(techList){
   techString='';
   if (techList.length>0){
     techString='## Technologies Used\n ';
-  techString+='---\n ';
     for (i=0;i<techList.length;i++){
       techString= techString+ '* ' + techList[i] +'\n ';
   }
