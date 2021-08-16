@@ -58,14 +58,12 @@ function generateMarkdown(data) {
   ${data.shortDes}
   
   ## Description
-  ---
   ${data.description}
   
 
   ${createTechnologies(data.technologies)}
   
   ## Table of Contents 
-  ---
   
   - [Installation](#installation)
   - [Usage](#usage)
@@ -74,32 +72,26 @@ function generateMarkdown(data) {
   - [Questoins](#questions)
   
   ## Installation 
-  ---
   
   ${data.install}  
   
   ## Usage
-  ---
   
   ${data.usage}  
 
   ## License 
-  ---
   
   ${data.license} ${renderLicenseBadgeLink(data.license)}
 
   ## Contributed
-  ---
   
   ${data.contributed}  
   
   ## Test
-  ---
   
   ${data.test}  
   
   ## Questions
-  ---
   If you hane any questions:
   
   Get in touch with me on Github [${data.username}](https://github.com/${data.username})
